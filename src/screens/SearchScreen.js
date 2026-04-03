@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, FlatList, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { Ionicons } from '@expo/vector-icons';  // ← CHANGE HERE
-
+import { Ionicons } from '@expo/vector-icons'; 
 export default function SearchScreen() {
   const [searchText, setSearchText] = useState('');
   

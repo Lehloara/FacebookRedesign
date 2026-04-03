@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, Image, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { Ionicons } from '@expo/vector-icons';  // ← CHANGED THIS
+import { Ionicons } from '@expo/vector-icons';  
 import Avatar from '../components/Avatar';
 
 const coverPhoto = require('../../assets/images/cover.jpg');
@@ -24,10 +24,10 @@ export default function ProfileScreen() {
       <ScrollView>
         <View style={styles.header}>
           <TouchableOpacity>
-            <Ionicons name="arrow-back" size={24} color="#fff" />  {/* ← CHANGED */}
+            <Ionicons name="arrow-back" size={24} color="#fff" />  {}
           </TouchableOpacity>
           <TouchableOpacity>
-            <Ionicons name="settings-outline" size={24} color="#fff" />  {/* ← CHANGED */}
+            <Ionicons name="settings-outline" size={24} color="#fff" />  {}
           </TouchableOpacity>
         </View>
         <Image source={user.coverPhoto} style={styles.coverPhoto} />
