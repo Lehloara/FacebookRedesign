@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, Image, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import Icon from 'react-native-vector-icons/Ionicons';
+import { Ionicons } from '@expo/vector-icons';  // ← CHANGED THIS
 import Avatar from '../components/Avatar';
 
 const coverPhoto = require('../../assets/images/cover.jpg');
@@ -23,8 +23,12 @@ export default function ProfileScreen() {
     <SafeAreaView style={styles.container}>
       <ScrollView>
         <View style={styles.header}>
-          <TouchableOpacity><Icon name="arrow-back" size={24} color="#fff" /></TouchableOpacity>
-          <TouchableOpacity><Icon name="settings-outline" size={24} color="#fff" /></TouchableOpacity>
+          <TouchableOpacity>
+            <Ionicons name="arrow-back" size={24} color="#fff" />  {/* ← CHANGED */}
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Ionicons name="settings-outline" size={24} color="#fff" />  {/* ← CHANGED */}
+          </TouchableOpacity>
         </View>
         <Image source={user.coverPhoto} style={styles.coverPhoto} />
         <View style={styles.profileInfo}>
@@ -33,11 +37,22 @@ export default function ProfileScreen() {
           <Text style={styles.username}>{user.username}</Text>
           <Text style={styles.bio}>{user.bio}</Text>
           <View style={styles.stats}>
-            <View style={styles.statItem}><Text style={styles.statNumber}>{user.posts}</Text><Text style={styles.statLabel}>Posts</Text></View>
-            <View style={styles.statItem}><Text style={styles.statNumber}>{user.followers}</Text><Text style={styles.statLabel}>Followers</Text></View>
-            <View style={styles.statItem}><Text style={styles.statNumber}>{user.following}</Text><Text style={styles.statLabel}>Following</Text></View>
+            <View style={styles.statItem}>
+              <Text style={styles.statNumber}>{user.posts}</Text>
+              <Text style={styles.statLabel}>Posts</Text>
+            </View>
+            <View style={styles.statItem}>
+              <Text style={styles.statNumber}>{user.followers}</Text>
+              <Text style={styles.statLabel}>Followers</Text>
+            </View>
+            <View style={styles.statItem}>
+              <Text style={styles.statNumber}>{user.following}</Text>
+              <Text style={styles.statLabel}>Following</Text>
+            </View>
           </View>
-          <TouchableOpacity style={styles.editButton}><Text style={styles.editButtonText}>Edit Profile</Text></TouchableOpacity>
+          <TouchableOpacity style={styles.editButton}>
+            <Text style={styles.editButtonText}>Edit Profile</Text>
+          </TouchableOpacity>
         </View>
       </ScrollView>
     </SafeAreaView>

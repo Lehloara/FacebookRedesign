@@ -1,9 +1,18 @@
 import React, { useState } from 'react';
 import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
+import { Ionicons } from '@expo/vector-icons';  // ← CHANGE HERE
 import Avatar from './Avatar';
 
 export default function PostCard({ post, onLike }) {
+  const [isLiked, setIsLiked] = useState(post.isLiked);
+  const [likesCount, setLikesCount] = useState(post.likes);
+
+  const handleLikePress = () => {
+    onLike(post.id);
+    setIsLiked(!isLiked);
+    setLikesCount(isLiked ? likesCount - 1 : likesCount + 1);
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -12,21 +21,33 @@ export default function PostCard({ post, onLike }) {
           <Text style={styles.username}>{post.username}</Text>
           <Text style={styles.timestamp}>{post.timestamp}</Text>
         </View>
-        <TouchableOpacity><Icon name="ellipsis-horizontal" size={20} color="#65676b" /></TouchableOpacity>
+        <TouchableOpacity>
+          <Ionicons name="ellipsis-horizontal" size={20} color="#65676b" />
+        </TouchableOpacity>
       </View>
+      
       <Text style={styles.content}>{post.content}</Text>
       {post.image && <Image source={post.image} style={styles.postImage} />}
+      
       <View style={styles.actions}>
-        <TouchableOpacity style={styles.actionButton} onPress={() => onLike(post.id)}>
-          <Icon name={post.isLiked ? 'thumbs-up' : 'thumbs-up-outline'} size={22} color={post.isLiked ? '#1877f2' : '#65676b'} />
-          <Text style={[styles.actionText, post.isLiked && styles.likedText]}>{post.likes} Likes</Text>
+        <TouchableOpacity style={styles.actionButton} onPress={handleLikePress}>
+          <Ionicons 
+            name={isLiked ? 'thumbs-up' : 'thumbs-up-outline'} 
+            size={22} 
+            color={isLiked ? '#1877f2' : '#65676b'} 
+          />
+          <Text style={[styles.actionText, isLiked && styles.likedText]}>
+            {likesCount} Likes
+          </Text>
         </TouchableOpacity>
+
         <TouchableOpacity style={styles.actionButton}>
-          <Icon name="chatbubble-outline" size={22} color="#65676b" />
+          <Ionicons name="chatbubble-outline" size={22} color="#65676b" />
           <Text style={styles.actionText}>{post.comments} Comments</Text>
         </TouchableOpacity>
+
         <TouchableOpacity style={styles.actionButton}>
-          <Icon name="share-outline" size={22} color="#65676b" />
+          <Ionicons name="share-outline" size={22} color="#65676b" />
           <Text style={styles.actionText}>{post.shares} Shares</Text>
         </TouchableOpacity>
       </View>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import Icon from 'react-native-vector-icons/Ionicons';
+import { Ionicons } from '@expo/vector-icons';  // ← CHANGE HERE
 
 export default function CreatePostScreen({ navigation }) {
   const [postContent, setPostContent] = useState('');
@@ -19,17 +19,29 @@ export default function CreatePostScreen({ navigation }) {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
-        <TouchableOpacity onPress={() => navigation.goBack()}><Text style={styles.cancel}>Cancel</Text></TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.goBack()}>
+          <Text style={styles.cancel}>Cancel</Text>
+        </TouchableOpacity>
         <Text style={styles.title}>Create Post</Text>
-        <TouchableOpacity onPress={handlePost}><Text style={[styles.post, !postContent.trim() && styles.disabled]}>Post</Text></TouchableOpacity>
+        <TouchableOpacity onPress={handlePost}>
+          <Text style={[styles.post, !postContent.trim() && styles.disabled]}>Post</Text>
+        </TouchableOpacity>
       </View>
-      <TextInput style={styles.input} placeholder="What's on your mind?" multiline value={postContent} onChangeText={setPostContent} />
+      
+      <TextInput 
+        style={styles.input} 
+        placeholder="What's on your mind?" 
+        multiline 
+        value={postContent} 
+        onChangeText={setPostContent} 
+      />
+      
       <View style={styles.mediaActions}>
         <Text style={styles.addText}>Add to your post</Text>
         <View style={styles.icons}>
-          <TouchableOpacity><Icon name="image-outline" size={30} color="#45bd62" /></TouchableOpacity>
-          <TouchableOpacity><Icon name="videocam-outline" size={30} color="#e42645" /></TouchableOpacity>
-          <TouchableOpacity><Icon name="happy-outline" size={30} color="#f5b33d" /></TouchableOpacity>
+          <TouchableOpacity><Ionicons name="image-outline" size={30} color="#45bd62" /></TouchableOpacity>
+          <TouchableOpacity><Ionicons name="videocam-outline" size={30} color="#e42645" /></TouchableOpacity>
+          <TouchableOpacity><Ionicons name="happy-outline" size={30} color="#f5b33d" /></TouchableOpacity>
         </View>
       </View>
     </SafeAreaView>

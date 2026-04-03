@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, FlatList, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import Icon from 'react-native-vector-icons/Ionicons';
+import { Ionicons } from '@expo/vector-icons';  // ← CHANGE HERE
 
 export default function SearchScreen() {
   const [searchText, setSearchText] = useState('');
@@ -15,7 +15,7 @@ export default function SearchScreen() {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.searchBar}>
-        <Icon name="search" size={20} color="#65676b" />
+        <Ionicons name="search" size={20} color="#65676b" />
         <TextInput 
           style={styles.input} 
           placeholder="Search Facebook" 
