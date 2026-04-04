@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { Ionicons } from '@expo/vector-icons';  // ← CHANGE HERE
+import { Ionicons } from '@expo/vector-icons';  
 
 export default function Navbar({ title, titleColor = '#1877f2', showSearch = true, showMessenger = true }) {
   return (
